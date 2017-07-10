@@ -4,13 +4,18 @@ var link = "amazon.";
 
 browser.tabs.onUpdated.addListener(
   function(tabId, changeInfo, tab) {
-    var tmp = tab.url;
+    var currentTime = Date();
 
-    if(tmp.indexOf(host) == -1) {
-      if(tmp.indexOf(link) > -1) {
+    if(timers[tabId] == null || (currentTime - timers[tabId]) === (20 * 60 * 1000))
+    {
+      timers[tabId] = currentTime;
 
-        tmp += host;
-        browser.tabs.update(tabId, { url: tmp} );
+      var tmp = tab.url;
+      if(tmp.indexOf(host) == -1) {
+        if(tmp.indexOf(link) > -1) {
+          tmp += host;
+          chrome.tabs.update(tabId, { url: tmp} );
+        }
       }
     }
   }
