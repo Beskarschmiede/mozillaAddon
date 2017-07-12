@@ -1,6 +1,6 @@
-var host = "&tag=beskarschmied-21&camp=4582&creative=670874&linkCode=ur1&adid=03MN9N1SRC0AG8BK6ADV&";
+var affiliateTag = "tag=beskarschmied-21";
 
-var link = "amazon.";
+var amazonAddress = "amazon.de";
 
 browser.tabs.onUpdated.addListener(
   function(tabId, changeInfo, tab) {
@@ -10,11 +10,14 @@ browser.tabs.onUpdated.addListener(
     {
       timers[tabId] = currentTime;
 
-      var tmp = tab.url;
-      if(tmp.indexOf(host) == -1) {
-        if(tmp.indexOf(link) > -1) {
-          tmp += host;
-          chrome.tabs.update(tabId, { url: tmp} );
+      var tabUrl = tab.url;
+      if(tabUrl.indexOf(affiliateTag) == -1) {
+        if(tabUrl.indexOf(amazonAddress) > -1) {
+          if(tabUrl==amazonAddress||tabUrl==amazonAddress+"/") {
+          tabUrl += "?"+affiliateTag; 
+          }
+          tabUrl += "&"+affiliateTag;
+          chrome.tabs.update(tabId, { url: tabUrl} );
         }
       }
     }
