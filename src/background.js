@@ -14,10 +14,10 @@ browser.tabs.onUpdated.addListener(
       if(tabUrl.indexOf(affiliateTag) == -1) {
         if(tabUrl.indexOf(amazonAddress) > -1) {
           if(tabUrl==amazonAddress||tabUrl==amazonAddress+"/") {
-          tabUrl += "?"+affiliateTag; 
+            tabUrl += "?"+affiliateTag; 
           }
           tabUrl += "&"+affiliateTag;
-          chrome.tabs.update(tabId, { url: tabUrl} );
+          browser.tabs.update(tabId, { url: tabUrl} );
         }
       }
     }
