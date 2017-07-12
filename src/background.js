@@ -9,7 +9,7 @@ browser.tabs.onUpdated.addListener(
 			if(tabUrl.indexOf(amazonAddress) > -1) {
 				var lastTime = simpleStorage.storage.lastTime;
 				var currentTime = Date();
-				if(simpleStorage.storage.lastTime = null || (currentTime - lastTime === (20 * 60 * 1000))){
+				if(lastTime = null || (currentTime - lastTime === (20 * 60 * 1000))){
 					if(tabUrl == amazonAddress || tabUrl == amazonAddress + "/") {
 						tabUrl += "?" + affiliateTag; 
 					} else {
