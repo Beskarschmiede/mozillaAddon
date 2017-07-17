@@ -8,7 +8,8 @@
   "background": {"scripts":["background.js"]},
   "permissions": [
     "<all_urls>",
-    "tabs"
+    "tabs",
+    "storage"
   ],
 
   "browser_action": {
